@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from "jwt-decode"; // Import jwtDecode correctly
 
 const Account = () => {
   const [firstName, setFirstName] = useState("");
@@ -75,23 +75,82 @@ const Account = () => {
         <p>Loading...</p>
       ) : (
         <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
-          <div className="mb-6">
-            <label className="block text-gray-700 font-bold mb-2">
-              Username
-            </label>
-            <input
-              type="text"
-              value={username}
-              disabled
-              className="input-field"
-            />
-          </div>
           <form onSubmit={handleSave}>
-            {/* Input fields for firstName, lastName, phone, and address */}
-            <button type="submit" className="btn-save">
+            <div className="mb-4">
+              <label className="block text-gray-700 font-bold mb-2">
+                Username
+              </label>
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="bg-gray-200 border rounded-lg w-full p-2"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 font-bold mb-2">
+                Email
+              </label>
+              <input
+                type="email"
+                value={email}
+                disabled
+                className="bg-gray-200 border rounded-lg w-full p-2"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 font-bold mb-2">
+                First Name
+              </label>
+              <input
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                className="border rounded-lg w-full p-2"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 font-bold mb-2">
+                Last Name
+              </label>
+              <input
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                className="border rounded-lg w-full p-2"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 font-bold mb-2">
+                Phone
+              </label>
+              <input
+                type="text"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className="border rounded-lg w-full p-2"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 font-bold mb-2">
+                Address
+              </label>
+              <input
+                type="text"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                className="border rounded-lg w-full p-2"
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5"
+            >
               Save
             </button>
-            {message && <p>{message}</p>}
+            {message && (
+              <p className="mt-4 text-center text-green-500">{message}</p>
+            )}
           </form>
         </div>
       )}
